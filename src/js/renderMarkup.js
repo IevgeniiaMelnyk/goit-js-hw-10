@@ -2,12 +2,12 @@ export function renderMarkupList(element, countriesArr, markupCreating) {
     element.innerHTML = countriesArr.map(markupCreating).join(''); 
 };
 
-export function markupCreatingList({ flags: { svg: flag }, name: { official: name } }) {
+export function markupCreatingList({ flags, name }) {
     
     return `<li class="item-country">
           <img
             class="item-country-flag"
-            src="${flag}"
+            src="${flags}"
             alt="${name}"
             height="20px"
             width="36px"
@@ -16,13 +16,12 @@ export function markupCreatingList({ flags: { svg: flag }, name: { official: nam
         </li>`;
 };
 
-export function markupCreatingElement({ flags: { svg: flag }, name: { official: name }, capital: capital, population: population, languages:
-  language }) {
+export function markupCreatingElement({ flags, name, capital, population, languages }) {
   
   return `
         <div class="country-title">
           <img  class="country-flag"
-                src="${flag}"
+                src="${flags}"
                 alt="${name}"
                 height="24px"
                 width="40px"
@@ -39,7 +38,7 @@ export function markupCreatingElement({ flags: { svg: flag }, name: { official: 
         </div>
         <div class="country-specification">
           <p class="country-specification-title">Language:</p>
-          <p class="country-specification-description">${Object.values(language).join(', ')}</p>
+          <p class="country-specification-description">${Object.values(languages).join(', ')}</p>
         </div>
   `   
 };

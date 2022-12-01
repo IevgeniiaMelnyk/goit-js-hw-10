@@ -24,15 +24,24 @@ function onSearch(e) {
     }
     fetchCountries(searchQuery)
         .then((countriesArr) => {
-            
+
+            const countriesArrEdit = countriesArr.map(country => (
+                {
+                ...country,
+                flags: country.flags.svg,
+                name: country.name.official
+                }
+            ))
+            console.log(countriesArrEdit)
+                        
             if (countriesArr.length > 10) {
                 tooFewLetters();
             };
             if (countriesArr.length <= 10 && countriesArr.length >= 2) {
-                renderMarkupList(refs.countriesUl, countriesArr, markupCreatingList);
+                renderMarkupList(refs.countriesUl, countriesArrEdit, markupCreatingList);
             };
             if (countriesArr.length < 2) {
-                renderMarkupList(refs.countryInfo, countriesArr, markupCreatingElement);
+                renderMarkupList(refs.countryInfo, countriesArrEdit, markupCreatingElement);
             };
         })
         .catch(onFetchError);    
