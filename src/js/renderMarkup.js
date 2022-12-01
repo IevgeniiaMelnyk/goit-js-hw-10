@@ -38,7 +38,7 @@ export function markupCreatingElement({ flags: { svg: flag }, name: { official: 
         </div>
         <div class="country-specification">
           <p class="country-specification-title">Language:</p>
-          <p class="country-specification-description">${Object.values(language)}</p>
+          <p class="country-specification-description">${Object.values(language).join(', ')}</p>
         </div>
   `   
 };
