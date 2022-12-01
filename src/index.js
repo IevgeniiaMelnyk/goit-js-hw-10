@@ -17,14 +17,14 @@ function onSearch(e) {
     e.preventDefault();
     clear();
 
-    const searchQuery = refs.searchBox.value;
-    const sanitarSearchQuery = searchQuery.trim();
-    
-    if (sanitarSearchQuery === '') {
+    const searchQuery = refs.searchBox.value.trim();
+       
+    if (searchQuery === '') {
         return;
     }
-    fetchCountries(sanitarSearchQuery)
+    fetchCountries(searchQuery)
         .then((countriesArr) => {
+            
             if (countriesArr.length > 10) {
                 tooFewLetters();
             };
@@ -34,11 +34,8 @@ function onSearch(e) {
             if (countriesArr.length < 2) {
                 renderMarkupList(refs.countryInfo, countriesArr, markupCreatingElement);
             };
-            
         })
-        .catch(onFetchError)
-        .finally(() => {});
-    
+        .catch(onFetchError);    
 };
 
 function onFetchError() {

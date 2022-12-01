@@ -2,7 +2,8 @@ export function renderMarkupList(element, countriesArr, markupCreating) {
     element.innerHTML = countriesArr.map(markupCreating).join(''); 
 };
 
-export function markupCreatingList({flags: { svg: flag }, name: { official: name }}) {
+export function markupCreatingList({ flags: { svg: flag }, name: { official: name } }) {
+    
     return `<li class="item-country">
           <img
             class="item-country-flag"
